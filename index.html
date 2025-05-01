@@ -1,112 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <title>Trailer Appointments Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f8fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        img.logo {
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        #response {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background-color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Trailer Appointments Dashboard&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f7f8fa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 12px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.error {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: red;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Ndustrial_logo_mock.png" alt="Ndustrial Logo"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Trailer Appointments&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="response" class="card"&gt;Loading...&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const apiUrl = 'https://lineage.api.ndustrial.io/graphql';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const headers = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'Content-Type': 'application/json',</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'Authorization': 'token niou_YkiaMScYAxbh4fwn3Mx2Hpzeh3n9Va5UBVSW'</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const data = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>query: `</p>
-<p class="p1"><span class="Apple-converted-space">                </span>query trailerApptCount {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>trailerAppointments {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>totalCount</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>__typename</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>`</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>fetch(apiUrl, {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>method: 'POST',</p>
-<p class="p1"><span class="Apple-converted-space">            </span>headers: headers,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>body: JSON.stringify(data)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>})</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.then(response =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>console.log('HTTP status:', response.status);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return response.json();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>})</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.then(result =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>console.log('GraphQL result:', result);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const responseDiv = document.getElementById('response');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (result.data &amp;&amp; result.data.trailerAppointments) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responseDiv.innerText = 'Total Appointments: ' + result.data.trailerAppointments.totalCount;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if (result.errors &amp;&amp; result.errors.length &gt; 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responseDiv.innerText = 'GraphQL Error: ' + result.errors[0].message;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responseDiv.classList.add('error');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responseDiv.innerText = 'Error: Unexpected response format';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>responseDiv.classList.add('error');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>})</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.catch(error =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('response').innerText = 'Network Error (check console)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('response').classList.add('error');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>console.error('Fetch error:', error);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Ndustrial_logo_mock.png" alt="Ndustrial Logo">
+
+    <h1>Trailer Appointments</h1>
+    <div id="response">Loading...</div>
+
+    <script>
+        const apiUrl = 'https://lineage.api.ndustrial.io/graphql';
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'token niou_YkiaMScYAxbh4fwn3Mx2Hpzeh3n9Va5UBVSW'
+        };
+
+        const data = {
+            query: "query trailerApptCount {\n  trailerAppointments {\n    totalCount\n  }\n  __typename\n}"
+        };
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            console.log('HTTP status:', response.status);
+            return response.json();
+        })
+        .then(result => {
+            console.log('GraphQL result:', result);
+            if (result.data && result.data.trailerAppointments) {
+                document.getElementById('response').innerText =
+                    'Total Count: ' + result.data.trailerAppointments.totalCount;
+            } else if (result.errors && result.errors.length > 0) {
+                document.getElementById('response').innerText =
+                    'GraphQL Error: ' + result.errors[0].message;
+            } else {
+                document.getElementById('response').innerText =
+                    'Error: Unexpected response format';
+            }
+        })
+        .catch(error => {
+            document.getElementById('response').innerText = 'Network Error';
+            console.error('Fetch error:', error);
+        });
+    </script>
+
 </body>
 </html>
+
