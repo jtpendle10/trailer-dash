@@ -33,6 +33,9 @@
             max-width: 400px;
             text-align: center;
         }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -40,24 +43,28 @@
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Ndustrial_logo_mock.png" alt="Ndustrial Logo">
 
     <h1>Trailer Appointments</h1>
+
     <div id="response">Loading...</div>
 
     <script>
-        const apiUrl = 'http://localhost:3000/proxy';
-
-
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'token niou_YkiaMScYAxbh4fwn3Mx2Hpzeh3n9Va5UBVSW'
-        };
+        const apiUrl = 'http://localhost:3000/proxy';  // POINT THIS TO YOUR PROXY
 
         const data = {
-            query: "query trailerApptCount {\n  trailerAppointments {\n    totalCount\n  }\n  __typename\n}"
+            query: `
+                query trailerApptCount {
+                    trailerAppointments {
+                        totalCount
+                        __typename
+                    }
+                }
+            `
         };
 
         fetch(apiUrl, {
             method: 'POST',
-            headers: headers,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
         .then(response => {
@@ -66,24 +73,25 @@
         })
         .then(result => {
             console.log('GraphQL result:', result);
+            const responseDiv = document.getElementById('response');
+
             if (result.data && result.data.trailerAppointments) {
-                document.getElementById('response').innerText =
-                    'Total Count: ' + result.data.trailerAppointments.totalCount;
+                responseDiv.innerText = 'Total Count: ' + result.data.trailerAppointments.totalCount;
             } else if (result.errors && result.errors.length > 0) {
-                document.getElementById('response').innerText =
-                    'GraphQL Error: ' + result.errors[0].message;
+                responseDiv.innerText = 'GraphQL Error: ' + result.errors[0].message;
+                responseDiv.classList.add('error');
             } else {
-                document.getElementById('response').innerText =
-                    'Error: Unexpected response format';
+                responseDiv.innerText = 'Error: Unexpected response format';
+                responseDiv.classList.add('error');
             }
         })
-            console.log('GraphQL result:', result);
         .catch(error => {
-            document.getElementById('response').innerText = 'Network Error';
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Network Error (check console)';
+            responseDiv.classList.add('error');
             console.error('Fetch error:', error);
         });
     </script>
 
 </body>
 </html>
-
