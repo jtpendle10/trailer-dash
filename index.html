@@ -36,6 +36,10 @@
             max-width: 600px;
             text-align: center;
         }
+        #last-updated {
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
         .error {
             color: red;
         }
@@ -48,10 +52,11 @@
     <h1>Trailer Appointments Processed</h1>
 
     <div id="response">Loading...</div>
+    <div id="last-updated">Last updated: --</div>
 
     <script>
         const apiUrl = 'https://trailer-proxy.onrender.com/proxy';  // POINT THIS TO YOUR PROXY
-
+    function fetchDataAndUpdate() {
         const data = {
             query: `
                 query trailerApptCount {
@@ -86,7 +91,10 @@
             } else {
                 responseDiv.innerText = 'Error: Unexpected response format';
                 responseDiv.classList.add('error');
-            }
+            };
+            const updatedTime = new Date();
+                document.getElementById('last-updated').innerText =
+                    `Last updated: ${updatedTime.toLocaleString()}`;
         })
         .catch(error => {
             const responseDiv = document.getElementById('response');
@@ -94,6 +102,9 @@
             responseDiv.classList.add('error');
             console.error('Fetch error:', error);
         });
+    }
+        fetchDataAndUpdate();
+        setInterval(fetchDataAndUpdate, 45000);
     </script>
 
 </body>
